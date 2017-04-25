@@ -1,0 +1,619 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		150156EF1EAFB74000F0AA71 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150156EE1EAFB74000F0AA71 /* PlaceViewModel.swift */; };
+		15331D5C1E9555F9007FED44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D5B1E9555F9007FED44 /* AppDelegate.swift */; };
+		15331D5E1E9555F9007FED44 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D5D1E9555F9007FED44 /* PlacesViewController.swift */; };
+		15331D611E9555F9007FED44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15331D5F1E9555F9007FED44 /* Main.storyboard */; };
+		15331D641E9555F9007FED44 /* NicePlaces.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15331D621E9555F9007FED44 /* NicePlaces.xcdatamodeld */; };
+		15331D661E9555F9007FED44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15331D651E9555F9007FED44 /* Assets.xcassets */; };
+		15331D691E9555F9007FED44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15331D671E9555F9007FED44 /* LaunchScreen.storyboard */; };
+		15331D741E9555FA007FED44 /* NicePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D731E9555FA007FED44 /* NicePlacesTests.swift */; };
+		15331D7F1E9555FA007FED44 /* NicePlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D7E1E9555FA007FED44 /* NicePlacesUITests.swift */; };
+		15331D8D1E9558D4007FED44 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D8C1E9558D4007FED44 /* PlaceViewController.swift */; };
+		155263331EA4CD4E00CD7E36 /* PlaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155263321EA4CD4E00CD7E36 /* PlaceStore.swift */; };
+		155263361EABC88D00CD7E36 /* MapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155263351EABC88D00CD7E36 /* MapPin.swift */; };
+		15CA0E1B1EAE6BA600BD02E8 /* Place+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA0E191EAE6BA600BD02E8 /* Place+CoreDataClass.swift */; };
+		15CA0E1C1EAE6BA600BD02E8 /* Place+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CA0E1A1EAE6BA600BD02E8 /* Place+CoreDataProperties.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		15331D701E9555F9007FED44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15331D501E9555F9007FED44 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15331D571E9555F9007FED44;
+			remoteInfo = NicePlaces;
+		};
+		15331D7B1E9555FA007FED44 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 15331D501E9555F9007FED44 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 15331D571E9555F9007FED44;
+			remoteInfo = NicePlaces;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		150156EE1EAFB74000F0AA71 /* PlaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
+		15331D581E9555F9007FED44 /* NicePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NicePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		15331D5B1E9555F9007FED44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		15331D5D1E9555F9007FED44 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
+		15331D601E9555F9007FED44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		15331D631E9555F9007FED44 /* NicePlaces.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NicePlaces.xcdatamodel; sourceTree = "<group>"; };
+		15331D651E9555F9007FED44 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		15331D681E9555F9007FED44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		15331D6A1E9555F9007FED44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15331D6F1E9555F9007FED44 /* NicePlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NicePlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15331D731E9555FA007FED44 /* NicePlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicePlacesTests.swift; sourceTree = "<group>"; };
+		15331D751E9555FA007FED44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15331D7A1E9555FA007FED44 /* NicePlacesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NicePlacesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		15331D7E1E9555FA007FED44 /* NicePlacesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicePlacesUITests.swift; sourceTree = "<group>"; };
+		15331D801E9555FA007FED44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15331D8C1E9558D4007FED44 /* PlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		155263321EA4CD4E00CD7E36 /* PlaceStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceStore.swift; sourceTree = "<group>"; };
+		155263351EABC88D00CD7E36 /* MapPin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPin.swift; sourceTree = "<group>"; };
+		15CA0E191EAE6BA600BD02E8 /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataClass.swift"; path = "Model/Place+CoreDataClass.swift"; sourceTree = "<group>"; };
+		15CA0E1A1EAE6BA600BD02E8 /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Place+CoreDataProperties.swift"; path = "Model/Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		15331D551E9555F9007FED44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15331D6C1E9555F9007FED44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15331D771E9555FA007FED44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		150156EC1EAFB71D00F0AA71 /* Places List */ = {
+			isa = PBXGroup;
+			children = (
+				15331D5D1E9555F9007FED44 /* PlacesViewController.swift */,
+			);
+			name = "Places List";
+			sourceTree = "<group>";
+		};
+		150156ED1EAFB72900F0AA71 /* Place */ = {
+			isa = PBXGroup;
+			children = (
+				15331D8C1E9558D4007FED44 /* PlaceViewController.swift */,
+				150156EE1EAFB74000F0AA71 /* PlaceViewModel.swift */,
+			);
+			name = Place;
+			sourceTree = "<group>";
+		};
+		15331D4F1E9555F9007FED44 = {
+			isa = PBXGroup;
+			children = (
+				15331D5A1E9555F9007FED44 /* NicePlaces */,
+				15331D721E9555FA007FED44 /* NicePlacesTests */,
+				15331D7D1E9555FA007FED44 /* NicePlacesUITests */,
+				15331D591E9555F9007FED44 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		15331D591E9555F9007FED44 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				15331D581E9555F9007FED44 /* NicePlaces.app */,
+				15331D6F1E9555F9007FED44 /* NicePlacesTests.xctest */,
+				15331D7A1E9555FA007FED44 /* NicePlacesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		15331D5A1E9555F9007FED44 /* NicePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				155263341EABC87E00CD7E36 /* Map Helpers */,
+				155263241EA4C36A00CD7E36 /* View Controllers */,
+				155263231EA4C35900CD7E36 /* Data */,
+				15331D5B1E9555F9007FED44 /* AppDelegate.swift */,
+				15331D5F1E9555F9007FED44 /* Main.storyboard */,
+				15331D651E9555F9007FED44 /* Assets.xcassets */,
+				15331D671E9555F9007FED44 /* LaunchScreen.storyboard */,
+				15331D6A1E9555F9007FED44 /* Info.plist */,
+				15331D621E9555F9007FED44 /* NicePlaces.xcdatamodeld */,
+			);
+			path = NicePlaces;
+			sourceTree = "<group>";
+		};
+		15331D721E9555FA007FED44 /* NicePlacesTests */ = {
+			isa = PBXGroup;
+			children = (
+				15331D731E9555FA007FED44 /* NicePlacesTests.swift */,
+				15331D751E9555FA007FED44 /* Info.plist */,
+			);
+			path = NicePlacesTests;
+			sourceTree = "<group>";
+		};
+		15331D7D1E9555FA007FED44 /* NicePlacesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				15331D7E1E9555FA007FED44 /* NicePlacesUITests.swift */,
+				15331D801E9555FA007FED44 /* Info.plist */,
+			);
+			path = NicePlacesUITests;
+			sourceTree = "<group>";
+		};
+		155263231EA4C35900CD7E36 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				155263321EA4CD4E00CD7E36 /* PlaceStore.swift */,
+				15CA0E191EAE6BA600BD02E8 /* Place+CoreDataClass.swift */,
+				15CA0E1A1EAE6BA600BD02E8 /* Place+CoreDataProperties.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		155263241EA4C36A00CD7E36 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				150156EC1EAFB71D00F0AA71 /* Places List */,
+				150156ED1EAFB72900F0AA71 /* Place */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		155263341EABC87E00CD7E36 /* Map Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				155263351EABC88D00CD7E36 /* MapPin.swift */,
+			);
+			name = "Map Helpers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		15331D571E9555F9007FED44 /* NicePlaces */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15331D831E9555FA007FED44 /* Build configuration list for PBXNativeTarget "NicePlaces" */;
+			buildPhases = (
+				15331D541E9555F9007FED44 /* Sources */,
+				15331D551E9555F9007FED44 /* Frameworks */,
+				15331D561E9555F9007FED44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NicePlaces;
+			productName = NicePlaces;
+			productReference = 15331D581E9555F9007FED44 /* NicePlaces.app */;
+			productType = "com.apple.product-type.application";
+		};
+		15331D6E1E9555F9007FED44 /* NicePlacesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15331D861E9555FA007FED44 /* Build configuration list for PBXNativeTarget "NicePlacesTests" */;
+			buildPhases = (
+				15331D6B1E9555F9007FED44 /* Sources */,
+				15331D6C1E9555F9007FED44 /* Frameworks */,
+				15331D6D1E9555F9007FED44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15331D711E9555F9007FED44 /* PBXTargetDependency */,
+			);
+			name = NicePlacesTests;
+			productName = NicePlacesTests;
+			productReference = 15331D6F1E9555F9007FED44 /* NicePlacesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		15331D791E9555FA007FED44 /* NicePlacesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 15331D891E9555FA007FED44 /* Build configuration list for PBXNativeTarget "NicePlacesUITests" */;
+			buildPhases = (
+				15331D761E9555FA007FED44 /* Sources */,
+				15331D771E9555FA007FED44 /* Frameworks */,
+				15331D781E9555FA007FED44 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				15331D7C1E9555FA007FED44 /* PBXTargetDependency */,
+			);
+			name = NicePlacesUITests;
+			productName = NicePlacesUITests;
+			productReference = 15331D7A1E9555FA007FED44 /* NicePlacesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		15331D501E9555F9007FED44 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Linus Nyberg";
+				TargetAttributes = {
+					15331D571E9555F9007FED44 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 655QPPEA68;
+						ProvisioningStyle = Automatic;
+					};
+					15331D6E1E9555F9007FED44 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 655QPPEA68;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 15331D571E9555F9007FED44;
+					};
+					15331D791E9555FA007FED44 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 655QPPEA68;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 15331D571E9555F9007FED44;
+					};
+				};
+			};
+			buildConfigurationList = 15331D531E9555F9007FED44 /* Build configuration list for PBXProject "NicePlaces" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 15331D4F1E9555F9007FED44;
+			productRefGroup = 15331D591E9555F9007FED44 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				15331D571E9555F9007FED44 /* NicePlaces */,
+				15331D6E1E9555F9007FED44 /* NicePlacesTests */,
+				15331D791E9555FA007FED44 /* NicePlacesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		15331D561E9555F9007FED44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15331D691E9555F9007FED44 /* LaunchScreen.storyboard in Resources */,
+				15331D661E9555F9007FED44 /* Assets.xcassets in Resources */,
+				15331D611E9555F9007FED44 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15331D6D1E9555F9007FED44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15331D781E9555FA007FED44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		15331D541E9555F9007FED44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15331D5E1E9555F9007FED44 /* PlacesViewController.swift in Sources */,
+				150156EF1EAFB74000F0AA71 /* PlaceViewModel.swift in Sources */,
+				15CA0E1C1EAE6BA600BD02E8 /* Place+CoreDataProperties.swift in Sources */,
+				15331D641E9555F9007FED44 /* NicePlaces.xcdatamodeld in Sources */,
+				15CA0E1B1EAE6BA600BD02E8 /* Place+CoreDataClass.swift in Sources */,
+				155263361EABC88D00CD7E36 /* MapPin.swift in Sources */,
+				15331D5C1E9555F9007FED44 /* AppDelegate.swift in Sources */,
+				15331D8D1E9558D4007FED44 /* PlaceViewController.swift in Sources */,
+				155263331EA4CD4E00CD7E36 /* PlaceStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15331D6B1E9555F9007FED44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15331D741E9555FA007FED44 /* NicePlacesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		15331D761E9555FA007FED44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15331D7F1E9555FA007FED44 /* NicePlacesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		15331D711E9555F9007FED44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15331D571E9555F9007FED44 /* NicePlaces */;
+			targetProxy = 15331D701E9555F9007FED44 /* PBXContainerItemProxy */;
+		};
+		15331D7C1E9555FA007FED44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 15331D571E9555F9007FED44 /* NicePlaces */;
+			targetProxy = 15331D7B1E9555FA007FED44 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		15331D5F1E9555F9007FED44 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15331D601E9555F9007FED44 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		15331D671E9555F9007FED44 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				15331D681E9555F9007FED44 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		15331D811E9555FA007FED44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 655QPPEA68;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		15331D821E9555FA007FED44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 655QPPEA68;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		15331D841E9555FA007FED44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NicePlaces/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.linusnyberg.NicePlaces;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		15331D851E9555FA007FED44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NicePlaces/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.linusnyberg.NicePlaces;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		15331D871E9555FA007FED44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NicePlacesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.linusnyberg.NicePlacesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NicePlaces.app/NicePlaces";
+			};
+			name = Debug;
+		};
+		15331D881E9555FA007FED44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NicePlacesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.linusnyberg.NicePlacesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NicePlaces.app/NicePlaces";
+			};
+			name = Release;
+		};
+		15331D8A1E9555FA007FED44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = NicePlacesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.linusnyberg.NicePlacesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = NicePlaces;
+			};
+			name = Debug;
+		};
+		15331D8B1E9555FA007FED44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = NicePlacesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.linusnyberg.NicePlacesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = NicePlaces;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		15331D531E9555F9007FED44 /* Build configuration list for PBXProject "NicePlaces" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15331D811E9555FA007FED44 /* Debug */,
+				15331D821E9555FA007FED44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15331D831E9555FA007FED44 /* Build configuration list for PBXNativeTarget "NicePlaces" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15331D841E9555FA007FED44 /* Debug */,
+				15331D851E9555FA007FED44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15331D861E9555FA007FED44 /* Build configuration list for PBXNativeTarget "NicePlacesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15331D871E9555FA007FED44 /* Debug */,
+				15331D881E9555FA007FED44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15331D891E9555FA007FED44 /* Build configuration list for PBXNativeTarget "NicePlacesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15331D8A1E9555FA007FED44 /* Debug */,
+				15331D8B1E9555FA007FED44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		15331D621E9555F9007FED44 /* NicePlaces.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				15331D631E9555F9007FED44 /* NicePlaces.xcdatamodel */,
+			);
+			currentVersion = 15331D631E9555F9007FED44 /* NicePlaces.xcdatamodel */;
+			path = NicePlaces.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 15331D501E9555F9007FED44 /* Project object */;
+}
