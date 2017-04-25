@@ -9,7 +9,8 @@
 import Foundation
 import MapKit
 
-class MapPin : NSObject, MKAnnotation {
+/// A simple MapKit annotation (pin) for a map view.
+class MapPin: NSObject, MKAnnotation {
 	var coordinate: CLLocationCoordinate2D
 	var title: String?
 	var subtitle: String?

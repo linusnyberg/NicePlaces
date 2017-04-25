@@ -10,8 +10,8 @@ import UIKit
 import MapKit
 
 /**
- The view controller for a single place.
- Is used both for saving new places and for viewing/editing existing ones.
+The view controller for a single place.
+Is used both for saving new places and for viewing/editing existing ones.
 */
 class PlaceViewController: UIViewController {
 
@@ -57,8 +57,8 @@ class PlaceViewController: UIViewController {
 		self.mode = mode
 	}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+	override func viewDidLoad() {
+		super.viewDidLoad()
 
 		locationManager.delegate = self
 

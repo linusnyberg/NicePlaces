@@ -10,6 +10,7 @@ import Foundation
 
 /// View model for PlaceViewController
 struct PlaceViewModel {
+
 	var name: String = ""
 	var latitude: Double = 0
 	var longitude: Double = 0

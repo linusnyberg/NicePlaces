@@ -53,7 +53,7 @@ class PlacesViewController: UIViewController {
 		let navigationController = UINavigationController(rootViewController: placeViewController)
 		placeViewController.savePlaceHandler = {[weak self] (_ name: String?, _ latitude: Double, _ longitude: Double) -> Void in
 			guard let strongSelf = self, let name = name else {
-    			return
+				return
 			}
 			strongSelf.savePlace(name: name, latitude: latitude, longitude: longitude)
 		}
@@ -128,7 +128,7 @@ extension PlacesViewController: UITableViewDelegate{
 			placeStore.updatePlace(place: place)
 			tableView.reloadData()
 		}
-		
+
 		navigationController.pushViewController(placeViewController, animated: true)
 	}
 }

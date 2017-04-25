@@ -59,5 +59,5 @@ class PlaceStore {
 			print("Failed when saving place: \(error), \(error.userInfo)")
 		}
 	}
-
+	
 }
