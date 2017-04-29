@@ -10,11 +10,9 @@ import UIKit
 import CoreData
 
 /// The list of saved places
-class PlacesViewController: UIViewController {
+class PlacesViewController: UITableViewController {
 
 	// MARK: - Outlets
-
-	@IBOutlet weak var tableView: UITableView!
 
 	// MARK: - Properties
 
@@ -38,12 +36,23 @@ class PlacesViewController: UIViewController {
 
 		tableView.delegate = self
 
-		navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(PlacesViewController.saveAction(_:)))
+		navigationItem.rightBarButtonItem = self.editButtonItem
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+
 		loadPlaces()
+
+		let saveItem = UIBarButtonItem(title: "Save This Place", style: .plain, target: self, action: #selector(PlacesViewController.saveAction(_:)))
+		self.navigationController?.isToolbarHidden = false
+		self.toolbarItems = [saveItem]
+	}
+
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+
+		self.navigationController?.isToolbarHidden = true
 	}
 
 	// MARK: - Actions
@@ -88,16 +97,29 @@ class PlacesViewController: UIViewController {
 		tableView.reloadData()
 	}
 
+	func deletePlaces(placesToDelete: [Place]) {
+		guard let placeStore = placeStore else {
+			return
+		}
+		placeStore.deletePlaces(places: placesToDelete)
+		for place in placesToDelete {
+			guard let index = places.index(of: place) else {
+				continue
+			}
+			places.remove(at: index)
+		}
+	}
+
 }
 
 // MARK: - UITableViewDataSource
-extension PlacesViewController: UITableViewDataSource {
+extension PlacesViewController {
 
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return places.count
 	}
 
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for:indexPath)
 		let place = places[indexPath.row]
 		cell.textLabel?.text = place.value(forKeyPath: "name") as? String
@@ -106,9 +128,9 @@ extension PlacesViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension PlacesViewController: UITableViewDelegate{
+extension PlacesViewController{
 
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let navigationController = self.navigationController else {
 			return
 		}
@@ -130,5 +152,16 @@ extension PlacesViewController: UITableViewDelegate{
 		}
 
 		navigationController.pushViewController(placeViewController, animated: true)
+	}
+
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		let place = places[indexPath.row]
+
+		if (editingStyle == .delete) {
+			deletePlaces(placesToDelete: [place])
+			tableView.beginUpdates()
+			tableView.deleteRows(at: [indexPath], with: .automatic)
+			tableView.endUpdates()
+		}
 	}
 }

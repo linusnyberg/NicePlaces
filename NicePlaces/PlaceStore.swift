@@ -46,7 +46,7 @@ class PlaceStore {
 		do {
 			try managedContext.save()
 		} catch let error as NSError {
-			print("Failed when saving place: \(error), \(error.userInfo)")
+			print("Failed when creating place: \(error), \(error.userInfo)")
 		}
 		return place
 	}
@@ -56,7 +56,19 @@ class PlaceStore {
 		do {
 			try managedContext.save()
 		} catch let error as NSError {
-			print("Failed when saving place: \(error), \(error.userInfo)")
+			print("Failed when updating place: \(error), \(error.userInfo)")
+		}
+	}
+
+	func deletePlaces(places: [Place]) {
+		let managedContext = persistentContainer.viewContext
+		for place in places {
+			managedContext.delete(place)
+		}
+		do {
+			try managedContext.save()
+		} catch let error as NSError {
+			print("Failed when deleting places: \(error), \(error.userInfo)")
 		}
 	}
 	
