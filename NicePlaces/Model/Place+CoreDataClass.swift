@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import MapKit
 
-public class Place: NSManagedObject {
+public class Place: NSManagedObject, ManuallySortable {
 
 }
 

@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		150156EF1EAFB74000F0AA71 /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150156EE1EAFB74000F0AA71 /* PlaceViewModel.swift */; };
+		150156F61EB60F0A00F0AA71 /* ManuallySortable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150156F51EB60F0A00F0AA71 /* ManuallySortable.swift */; };
+		150156FA1EB6174500F0AA71 /* ManualSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150156F91EB6174500F0AA71 /* ManualSorter.swift */; };
+		150156FC1EB61B0500F0AA71 /* ManualSorterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150156FB1EB61B0500F0AA71 /* ManualSorterTests.swift */; };
 		15331D5C1E9555F9007FED44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D5B1E9555F9007FED44 /* AppDelegate.swift */; };
 		15331D5E1E9555F9007FED44 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D5D1E9555F9007FED44 /* PlacesViewController.swift */; };
 		15331D611E9555F9007FED44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15331D5F1E9555F9007FED44 /* Main.storyboard */; };
 		15331D641E9555F9007FED44 /* NicePlaces.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 15331D621E9555F9007FED44 /* NicePlaces.xcdatamodeld */; };
 		15331D661E9555F9007FED44 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15331D651E9555F9007FED44 /* Assets.xcassets */; };
 		15331D691E9555F9007FED44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15331D671E9555F9007FED44 /* LaunchScreen.storyboard */; };
-		15331D741E9555FA007FED44 /* NicePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D731E9555FA007FED44 /* NicePlacesTests.swift */; };
 		15331D7F1E9555FA007FED44 /* NicePlacesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D7E1E9555FA007FED44 /* NicePlacesUITests.swift */; };
 		15331D8D1E9558D4007FED44 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15331D8C1E9558D4007FED44 /* PlaceViewController.swift */; };
 		155263331EA4CD4E00CD7E36 /* PlaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155263321EA4CD4E00CD7E36 /* PlaceStore.swift */; };
@@ -42,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		150156EE1EAFB74000F0AA71 /* PlaceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
+		150156F51EB60F0A00F0AA71 /* ManuallySortable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuallySortable.swift; sourceTree = "<group>"; };
+		150156F91EB6174500F0AA71 /* ManualSorter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualSorter.swift; sourceTree = "<group>"; };
+		150156FB1EB61B0500F0AA71 /* ManualSorterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManualSorterTests.swift; sourceTree = "<group>"; };
 		15331D581E9555F9007FED44 /* NicePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NicePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15331D5B1E9555F9007FED44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15331D5D1E9555F9007FED44 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
@@ -51,7 +56,6 @@
 		15331D681E9555F9007FED44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15331D6A1E9555F9007FED44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15331D6F1E9555F9007FED44 /* NicePlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NicePlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		15331D731E9555FA007FED44 /* NicePlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicePlacesTests.swift; sourceTree = "<group>"; };
 		15331D751E9555FA007FED44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15331D7A1E9555FA007FED44 /* NicePlacesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NicePlacesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		15331D7E1E9555FA007FED44 /* NicePlacesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicePlacesUITests.swift; sourceTree = "<group>"; };
@@ -105,6 +109,15 @@
 			name = Place;
 			sourceTree = "<group>";
 		};
+		150156F41EB60E3400F0AA71 /* Sorting */ = {
+			isa = PBXGroup;
+			children = (
+				150156F51EB60F0A00F0AA71 /* ManuallySortable.swift */,
+				150156F91EB6174500F0AA71 /* ManualSorter.swift */,
+			);
+			name = Sorting;
+			sourceTree = "<group>";
+		};
 		15331D4F1E9555F9007FED44 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +144,7 @@
 				155263341EABC87E00CD7E36 /* Map Helpers */,
 				155263241EA4C36A00CD7E36 /* View Controllers */,
 				155263231EA4C35900CD7E36 /* Data */,
+				150156F41EB60E3400F0AA71 /* Sorting */,
 				15331D5B1E9555F9007FED44 /* AppDelegate.swift */,
 				15331D5F1E9555F9007FED44 /* Main.storyboard */,
 				15331D651E9555F9007FED44 /* Assets.xcassets */,
@@ -144,7 +158,7 @@
 		15331D721E9555FA007FED44 /* NicePlacesTests */ = {
 			isa = PBXGroup;
 			children = (
-				15331D731E9555FA007FED44 /* NicePlacesTests.swift */,
+				150156FB1EB61B0500F0AA71 /* ManualSorterTests.swift */,
 				15331D751E9555FA007FED44 /* Info.plist */,
 			);
 			path = NicePlacesTests;
@@ -326,11 +340,13 @@
 				15331D5E1E9555F9007FED44 /* PlacesViewController.swift in Sources */,
 				150156EF1EAFB74000F0AA71 /* PlaceViewModel.swift in Sources */,
 				15CA0E1C1EAE6BA600BD02E8 /* Place+CoreDataProperties.swift in Sources */,
+				150156F61EB60F0A00F0AA71 /* ManuallySortable.swift in Sources */,
 				15331D641E9555F9007FED44 /* NicePlaces.xcdatamodeld in Sources */,
 				15CA0E1B1EAE6BA600BD02E8 /* Place+CoreDataClass.swift in Sources */,
 				155263361EABC88D00CD7E36 /* MapPin.swift in Sources */,
 				15331D5C1E9555F9007FED44 /* AppDelegate.swift in Sources */,
 				15331D8D1E9558D4007FED44 /* PlaceViewController.swift in Sources */,
+				150156FA1EB6174500F0AA71 /* ManualSorter.swift in Sources */,
 				155263331EA4CD4E00CD7E36 /* PlaceStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,7 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15331D741E9555FA007FED44 /* NicePlacesTests.swift in Sources */,
+				150156FC1EB61B0500F0AA71 /* ManualSorterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

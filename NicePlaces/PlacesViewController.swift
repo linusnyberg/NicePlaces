@@ -80,7 +80,7 @@ class PlacesViewController: UITableViewController {
 
 		print("Loaded places:")
 		for place in places {
-			print("- \(place.name) at \(place.latitude),\(place.longitude)")
+			print("- \(place.name) at \(place.latitude),\(place.longitude) (order:\(place.order))")
 		}
 	}
 
@@ -109,7 +109,6 @@ class PlacesViewController: UITableViewController {
 			places.remove(at: index)
 		}
 	}
-
 }
 
 // MARK: - UITableViewDataSource
@@ -124,6 +123,17 @@ extension PlacesViewController {
 		let place = places[indexPath.row]
 		cell.textLabel?.text = place.value(forKeyPath: "name") as? String
 		return cell
+	}
+
+	override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+
+	override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+		guard let placeStore = placeStore else {
+			return
+		}
+		places = placeStore.movePlace(places: places, fromIndex: sourceIndexPath.row, toIndex: destinationIndexPath.row)
 	}
 }
 

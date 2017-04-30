@@ -11,9 +11,20 @@ import CoreData
 
 class PlaceStore {
 	var persistentContainer: NSPersistentContainer
+	var placeSorter: ManualSorter<Place>
 
 	init(withContainer persistentContainer: NSPersistentContainer) {
 		self.persistentContainer = persistentContainer
+
+		placeSorter = ManualSorter()
+		placeSorter.updatedObjectHandler = {[weak self] (_ sortable: Place) -> Void in
+			guard let strongSelf = self else {
+				return
+			}
+			print("Updating order of place: \(sortable.name) => \(sortable.order)")
+			strongSelf.updatePlace(place: sortable)
+		}
+
 	}
 
 	func loadPlaces() -> [Place] {
@@ -23,7 +34,7 @@ class PlaceStore {
 
 		do {
 			let places = try managedContext.fetch(fetchRequest)
-			return places
+			return placeSorter.checkAndSort(sortables: places)
 		} catch let error as NSError {
 			print("Failed fetching places: \(error), \(error.userInfo)")
 		}
@@ -71,5 +82,8 @@ class PlaceStore {
 			print("Failed when deleting places: \(error), \(error.userInfo)")
 		}
 	}
-	
+
+	func movePlace(places: [Place], fromIndex: Int, toIndex: Int) -> [Place] {
+		return placeSorter.moveSortable(sortables: places, fromIndex: fromIndex, toIndex: toIndex)
+	}
 }
