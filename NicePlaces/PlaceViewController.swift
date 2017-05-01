@@ -39,6 +39,7 @@ class PlaceViewController: UIViewController {
 	lazy var mapView: MKMapView! = {
 		let mapView = MKMapView()
 		mapView.translatesAutoresizingMaskIntoConstraints = false
+		mapView.delegate = self
 		return mapView
 	}()
 
@@ -150,7 +151,11 @@ class PlaceViewController: UIViewController {
 
 		locationManager.stopUpdatingLocation()
 
-		let pin = MapPin(coordinate: center, title: "Nice Place", subtitle: "")
+		var title = "Nice Place"
+		if viewModel.name.trimmingCharacters(in: .whitespaces).characters.count > 0 {
+			title = viewModel.name
+		}
+		let pin = MapPin(coordinate: center, title: title, subtitle: "")
 		self.mapView.addAnnotation(pin)
 	}
 
@@ -159,6 +164,15 @@ class PlaceViewController: UIViewController {
 	func savePlace() {
 		viewModel.name = textField.text!
 		savePlaceHandler(viewModel.name, viewModel.latitude, viewModel.longitude)
+	}
+
+	func mapItemFor(mapPin: MapPin) -> MKMapItem {
+		let placemark = MKPlacemark(coordinate: mapPin.coordinate, addressDictionary: nil)
+
+		let mapItem = MKMapItem(placemark: placemark)
+		mapItem.name = mapPin.title
+
+		return mapItem
 	}
 
 }
@@ -185,5 +199,32 @@ extension PlaceViewController: CLLocationManagerDelegate {
 		viewModel.latitude = location!.coordinate.latitude
 		viewModel.longitude = location!.coordinate.longitude
 		updatePinnedLocation()
+	}
+}
+
+// MARK: - MKMapViewDelegate
+extension PlaceViewController: MKMapViewDelegate {
+	func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+		guard let annotation = annotation as? MapPin else {
+			return nil
+		}
+		let identifier = "pin"
+		var view: MKPinAnnotationView
+		if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView {
+			view = dequeuedView
+			view.annotation = annotation
+		} else {
+			view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+			view.canShowCallout = true
+			view.calloutOffset = CGPoint(x: -5, y: 5)
+			view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+		}
+		return view
+	}
+
+	func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+		let location = view.annotation as! MapPin
+		let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+		mapItemFor(mapPin: location).openInMaps(launchOptions: launchOptions)
 	}
 }
