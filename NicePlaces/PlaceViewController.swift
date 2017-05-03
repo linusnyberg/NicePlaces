@@ -71,6 +71,10 @@ class PlaceViewController: UIViewController {
 		addTextFieldConstraints()
 		addMapViewConstraints()
 
+		let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(PlaceViewController.dropPinAction))
+		longPressGR.minimumPressDuration = 1.0
+		mapView.addGestureRecognizer(longPressGR)
+
 		switch mode {
 		case .new:
 			navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(PlaceViewController.dismissAction))
@@ -132,6 +136,20 @@ class PlaceViewController: UIViewController {
 		self.dismiss(animated: true, completion: nil)
 	}
 
+	func dropPinAction(gestureRecognizer: UIGestureRecognizer) {
+		if mode != .new && !self.isEditing {
+			// Only allow changing location if we're in edit mode or saving a new location
+			return
+		}
+		if gestureRecognizer.state == .began {
+			let touchPoint = gestureRecognizer.location(in: mapView)
+			let newCoordinates = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+			viewModel.latitude = newCoordinates.latitude
+			viewModel.longitude = newCoordinates.longitude
+			updatePinnedLocation()
+		}
+	}
+
 	// MARK: - MapKit helpers
 
 	func tryUpdatingLocation() {
@@ -156,6 +174,7 @@ class PlaceViewController: UIViewController {
 			title = viewModel.name
 		}
 		let pin = MapPin(coordinate: center, title: title, subtitle: "")
+		self.mapView.removeAnnotations(mapView.annotations)
 		self.mapView.addAnnotation(pin)
 	}
 
