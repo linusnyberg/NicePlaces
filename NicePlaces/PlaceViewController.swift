@@ -237,6 +237,7 @@ extension PlaceViewController: MKMapViewDelegate {
 			view.canShowCallout = true
 			view.calloutOffset = CGPoint(x: -5, y: 5)
 			view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+			view.animatesDrop = true
 		}
 		return view
 	}
