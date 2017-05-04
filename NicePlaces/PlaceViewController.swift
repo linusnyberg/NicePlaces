@@ -24,16 +24,26 @@ class PlaceViewController: UIViewController {
 	fileprivate var mode: Mode = .new
 	fileprivate var viewModel: PlaceViewModel = PlaceViewModel()
 
-	var savePlaceHandler: (_ name: String?, _ latitude: Double, _ longitude: Double) -> Void = {_ in }
+	var savePlaceHandler: (_ viewModel: PlaceViewModel) -> Void = {_ in }
 
-	lazy var textField: UITextField! = {
-		let textField = UITextField()
-		textField.placeholder = "Give the place a name or title"
-		textField.translatesAutoresizingMaskIntoConstraints = false
-		textField.borderStyle = .roundedRect
-		textField.textAlignment = .center
-		textField.delegate = self
-		return textField
+	lazy var nameTextField: UITextField! = {
+		let nameTextField = UITextField()
+		nameTextField.placeholder = "Give the place a name or title"
+		nameTextField.translatesAutoresizingMaskIntoConstraints = false
+		nameTextField.borderStyle = .roundedRect
+		nameTextField.textAlignment = .center
+		nameTextField.delegate = self
+		return nameTextField
+	}()
+
+	lazy var geocoderNameTextField: UITextField! = {
+		let geocoderNameTextField = UITextField()
+		geocoderNameTextField.translatesAutoresizingMaskIntoConstraints = false
+		geocoderNameTextField.borderStyle = .none
+		geocoderNameTextField.textAlignment = .center
+		geocoderNameTextField.delegate = self
+		geocoderNameTextField.isEnabled = false
+		return geocoderNameTextField
 	}()
 
 	lazy var mapView: MKMapView! = {
@@ -65,10 +75,12 @@ class PlaceViewController: UIViewController {
 
 		view.backgroundColor = UIColor.white
 
-		view.addSubview(textField)
+		view.addSubview(nameTextField)
+		view.addSubview(geocoderNameTextField)
 		view.addSubview(mapView)
 
-		addTextFieldConstraints()
+		addNameTextFieldConstraints()
+		addGeocoderNameTextFieldConstraints()
 		addMapViewConstraints()
 
 		let longPressGR = UILongPressGestureRecognizer(target: self, action: #selector(PlaceViewController.dropPinAction))
@@ -80,7 +92,7 @@ class PlaceViewController: UIViewController {
 			navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(PlaceViewController.dismissAction))
 			navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(PlaceViewController.saveAction))
 		default:
-			textField.isEnabled = false
+			nameTextField.isEnabled = false
 			navigationItem.rightBarButtonItem = self.editButtonItem
 		}
 	}
@@ -91,7 +103,7 @@ class PlaceViewController: UIViewController {
 			tryUpdatingLocation()
 		} else {
 			updatePinnedLocation()
-			textField.text = viewModel.name
+			nameTextField.text = viewModel.name
 		}
 	}
 
@@ -99,7 +111,7 @@ class PlaceViewController: UIViewController {
 
 	override func setEditing(_ editing: Bool, animated: Bool) {
 		super.setEditing(editing, animated: animated)
-		textField.isEnabled = editing
+		nameTextField.isEnabled = editing
 
 		if !editing {
 			savePlace()
@@ -108,16 +120,22 @@ class PlaceViewController: UIViewController {
 
 	// MARK: - Constraints
 
-	func addTextFieldConstraints() {
-		textField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		textField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
-		textField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100.0).isActive = true
+	func addNameTextFieldConstraints() {
+		nameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		nameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+		nameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 100.0).isActive = true
+	}
+
+	func addGeocoderNameTextFieldConstraints() {
+		geocoderNameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+		geocoderNameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
+		geocoderNameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10.0).isActive = true
 	}
 
 	func addMapViewConstraints() {
 		mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10.0).isActive = true
 		mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10.0).isActive = true
-		mapView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20.0).isActive = true
+		mapView.topAnchor.constraint(equalTo: geocoderNameTextField.bottomAnchor, constant: 20.0).isActive = true
 		mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120.0).isActive = true
 	}
 
@@ -176,13 +194,38 @@ class PlaceViewController: UIViewController {
 		let pin = MapPin(coordinate: center, title: title, subtitle: "")
 		self.mapView.removeAnnotations(mapView.annotations)
 		self.mapView.addAnnotation(pin)
+
+		self.reverseGeocodeLocation()
+	}
+
+	func reverseGeocodeLocation() {
+		let location = CLLocation(latitude: viewModel.latitude, longitude: viewModel.longitude)
+		let geoCoder = CLGeocoder()
+		geoCoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
+			if error != nil {
+				print("Error getting location: \(String(describing: error))")
+			} else {
+				let placeArray = placemarks as [CLPlacemark]!
+				var placeMark: CLPlacemark!
+				placeMark = placeArray?[0]
+				self.updateWithLocationPlacemark(placeMark: placeMark)
+			}
+		}
+	}
+
+	func updateWithLocationPlacemark(placeMark: CLPlacemark) {
+		// print("address: \(String(describing: placeMark.addressDictionary))")
+		if let name = placeMark.addressDictionary?["Name"] {
+			viewModel.geocoderName = name as! String
+			geocoderNameTextField.text = viewModel.geocoderName
+		}
 	}
 
 	// MARK: - Private helpers
 
 	func savePlace() {
-		viewModel.name = textField.text!
-		savePlaceHandler(viewModel.name, viewModel.latitude, viewModel.longitude)
+		viewModel.name = nameTextField.text!
+		savePlaceHandler(viewModel)
 	}
 
 	func mapItemFor(mapPin: MapPin) -> MKMapItem {

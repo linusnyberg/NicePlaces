@@ -14,6 +14,7 @@ struct PlaceViewModel {
 	var name: String = ""
 	var latitude: Double = 0
 	var longitude: Double = 0
+	var geocoderName: String = ""
 
 	init() {
 	}
@@ -22,5 +23,13 @@ struct PlaceViewModel {
 		self.name = place.name
 		self.latitude = place.latitude
 		self.longitude = place.longitude
+		self.geocoderName = place.geocoderName
+	}
+
+	func copyDataToPlace(place: Place) {
+		place.name = name
+		place.latitude = latitude
+		place.longitude = longitude
+		place.geocoderName = geocoderName
 	}
 }

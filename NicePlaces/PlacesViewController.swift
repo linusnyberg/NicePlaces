@@ -60,11 +60,11 @@ class PlacesViewController: UITableViewController {
 	@IBAction func saveAction(_ sender: Any) {
 		let placeViewController = PlaceViewController(mode: .new)
 		let navigationController = UINavigationController(rootViewController: placeViewController)
-		placeViewController.savePlaceHandler = {[weak self] (_ name: String?, _ latitude: Double, _ longitude: Double) -> Void in
-			guard let strongSelf = self, let name = name else {
+		placeViewController.savePlaceHandler = {[weak self] (_ viewModel: PlaceViewModel) -> Void in
+			guard let strongSelf = self else {
 				return
 			}
-			strongSelf.savePlace(name: name, latitude: latitude, longitude: longitude)
+			strongSelf.savePlace(viewModel: viewModel)
 		}
 		self.present(navigationController, animated: true, completion: nil)
 	}
@@ -80,16 +80,18 @@ class PlacesViewController: UITableViewController {
 
 		print("Loaded places:")
 		for place in places {
-			print("- \(place.name) at \(place.latitude),\(place.longitude) (order:\(place.order))")
+			print("- \(place.name) (\(place.geocoderName)) at \(place.latitude),\(place.longitude) (order:\(place.order))")
 		}
 	}
 
-	func savePlace(name: String, latitude: Double, longitude: Double) {
+	func savePlace(viewModel: PlaceViewModel) {
 		guard let placeStore = placeStore else {
 			return
 		}
 
-		guard let place = placeStore.createPlace(name: name, latitude: latitude, longitude: longitude) else {
+		guard let place = placeStore.createPlace(populateValues: { (place: Place) in
+			viewModel.copyDataToPlace(place: place)
+		}) else {
 			return
 		}
 
@@ -121,7 +123,22 @@ extension PlacesViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "PlaceCell", for:indexPath)
 		let place = places[indexPath.row]
-		cell.textLabel?.text = place.value(forKeyPath: "name") as? String
+
+		var names = Array<String>()
+		if (place.name.characters.count > 0) {
+			names.append(place.name)
+		}
+		if (place.geocoderName.characters.count > 0) {
+			names.append(place.geocoderName)
+		}
+		if (names.count == 1) {
+			cell.textLabel?.text = "\(names[0])"
+		} else if (names.count == 2) {
+			cell.textLabel?.text = "\(names[0]) (\(names[1]))"
+		} else {
+			cell.textLabel?.text = "?"
+		}
+
 		return cell
 	}
 
@@ -150,13 +167,11 @@ extension PlacesViewController{
 
 		let placeViewController = PlaceViewController(mode: .edit, viewModel: placeViewModel)
 
-		placeViewController.savePlaceHandler = {[weak self] (_ name: String?, _ latitude: Double, _ longitude: Double) -> Void in
-			guard let strongSelf = self, let name = name, let placeStore = strongSelf.placeStore else {
+		placeViewController.savePlaceHandler = {[weak self] (_ viewModel: PlaceViewModel) -> Void in
+			guard let strongSelf = self, let placeStore = strongSelf.placeStore else {
 				return
 			}
-			place.name = name
-			place.latitude = latitude
-			place.longitude = longitude
+			viewModel.copyDataToPlace(place: place)
 			placeStore.updatePlace(place: place)
 			tableView.reloadData()
 		}

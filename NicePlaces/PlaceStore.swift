@@ -42,7 +42,7 @@ class PlaceStore {
 		return []
 	}
 
-	func createPlace(name: String, latitude: Double, longitude: Double) -> Place? {
+	func createPlace(populateValues: (_ place: Place) -> Void) -> Place? {
 		let managedContext = persistentContainer.viewContext
 
 		guard let entity = NSEntityDescription.entity(forEntityName: "Place", in: managedContext) else {
@@ -50,9 +50,7 @@ class PlaceStore {
 		}
 
 		let place = Place(entity: entity, insertInto: managedContext)
-		place.name = name
-		place.latitude = latitude
-		place.longitude = longitude
+		populateValues(place)
 
 		do {
 			try managedContext.save()

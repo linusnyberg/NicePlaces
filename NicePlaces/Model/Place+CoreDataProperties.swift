@@ -20,5 +20,6 @@ extension Place {
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
 	@NSManaged public var order: Double
+	@NSManaged public var geocoderName: String
 
 }
