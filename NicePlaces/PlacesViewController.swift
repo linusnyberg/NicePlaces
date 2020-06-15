@@ -105,7 +105,7 @@ class PlacesViewController: UITableViewController {
 		}
 		placeStore.deletePlaces(places: placesToDelete)
 		for place in placesToDelete {
-			guard let index = places.index(of: place) else {
+			guard let index = places.firstIndex(of: place) else {
 				continue
 			}
 			places.remove(at: index)
@@ -125,10 +125,10 @@ extension PlacesViewController {
 		let place = places[indexPath.row]
 
 		var names = Array<String>()
-		if (place.name.characters.count > 0) {
+		if (place.name.count > 0) {
 			names.append(place.name)
 		}
-		if (place.geocoderName.characters.count > 0) {
+		if (place.geocoderName.count > 0) {
 			names.append(place.geocoderName)
 		}
 		if (names.count == 1) {
@@ -179,7 +179,7 @@ extension PlacesViewController{
 		navigationController.pushViewController(placeViewController, animated: true)
 	}
 
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		let place = places[indexPath.row]
 
 		if (editingStyle == .delete) {

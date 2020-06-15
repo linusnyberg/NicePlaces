@@ -141,7 +141,7 @@ class PlaceViewController: UIViewController {
 
 	// MARK: - Actions
 
-	func saveAction() {
+	@objc func saveAction() {
 		savePlace()
 		self.dismiss(animated: true, completion: nil)
 	}
@@ -150,11 +150,11 @@ class PlaceViewController: UIViewController {
 		self.isEditing = true
 	}
 
-	func dismissAction() {
+	@objc func dismissAction() {
 		self.dismiss(animated: true, completion: nil)
 	}
 
-	func dropPinAction(gestureRecognizer: UIGestureRecognizer) {
+	@objc func dropPinAction(gestureRecognizer: UIGestureRecognizer) {
 		if mode != .new && !self.isEditing {
 			// Only allow changing location if we're in edit mode or saving a new location
 			return
@@ -188,7 +188,7 @@ class PlaceViewController: UIViewController {
 		locationManager.stopUpdatingLocation()
 
 		var title = "Nice Place"
-		if viewModel.name.trimmingCharacters(in: .whitespaces).characters.count > 0 {
+		if viewModel.name.trimmingCharacters(in: .whitespaces).count > 0 {
 			title = viewModel.name
 		}
 		let pin = MapPin(coordinate: center, title: title, subtitle: "")
@@ -205,10 +205,10 @@ class PlaceViewController: UIViewController {
 			if error != nil {
 				print("Error getting location: \(String(describing: error))")
 			} else {
-				let placeArray = placemarks as [CLPlacemark]!
-				var placeMark: CLPlacemark!
-				placeMark = placeArray?[0]
-				self.updateWithLocationPlacemark(placeMark: placeMark)
+				let placeArray = (placemarks ?? [])
+				if let placeMark = placeArray.first {
+					self.updateWithLocationPlacemark(placeMark: placeMark)
+				}
 			}
 		}
 	}
